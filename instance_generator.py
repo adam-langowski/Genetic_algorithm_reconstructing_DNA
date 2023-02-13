@@ -70,19 +70,3 @@ def mutate(spectrum, k, p, pos_errors, neg_errors):
         elif ''.join(mutation_type) == 'negative':
             x = random.choice(spectrum)
             spectrum.remove(x)
-
-
-def oligonucleotide_count(spectrum):
-    """
-    Counts the frequency of each oligonucleotide in a DNA spectrum.
-
-    :param spectrum: A list of DNA substrings (oligonucleotides)
-    :return: A dictionary where each key is an oligonucleotide in the spectrum and each value is the number of times
-     that oligonucleotide occurs in the spectrum
-    """
-    counts_for_oligonucleotides = {}
-    for oligonucleotide in spectrum:
-        if oligonucleotide not in counts_for_oligonucleotides:
-            counts_for_oligonucleotides[oligonucleotide] = 0
-        counts_for_oligonucleotides[oligonucleotide] += 1
-    return counts_for_oligonucleotides

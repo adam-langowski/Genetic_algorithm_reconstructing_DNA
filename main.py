@@ -6,7 +6,7 @@ import itertools
 import random
 
 '''Parameters with possible modifications'''
-given_length = 100
+given_length_n = 100
 given_k = 8
 permutations_count = 100000
 population_count = 300
@@ -86,13 +86,13 @@ start = time.time()
 print("Starting algorithm...")
 print("Creating first random generation...")
 
-spectrum = instance_generator.generate(given_length, given_k, errors_percentage, positive_errors_percentage,
+spectrum = instance_generator.generate(given_length_n, given_k, errors_percentage, positive_errors_percentage,
                                        negative_errors_percentage)
 
 print('Shuffling spectrum to make it non-trivial problem.')
 random.shuffle(spectrum)
 
-print('Generating a sequence of n_permutations permutations of the input spectrum list.')
+print('Generating a sequence of permutations_count permutations of the input spectrum list.')
 for permutation in itertools.islice(itertools.permutations(spectrum), 0, permutations_count):
     permutation_list.append(permutation)
     result, count = overlap(permutation)
@@ -100,7 +100,7 @@ for permutation in itertools.islice(itertools.permutations(spectrum), 0, permuta
 
 print('Calculating fitnesses.')
 for org in permutation_count:
-    fitness = genetic_algorithm_functions.fitness(org, given_length, given_k)
+    fitness = genetic_algorithm_functions.fitness(org, given_length_n, given_k)
     permutation_fitness.append(fitness)
 
 mean_fitness.append(average(permutation_fitness))  # Primary population avg fitness
@@ -134,10 +134,10 @@ for generations in range(max_generations_count):
             child2 = child2.tolist()
             next_gen.append(child1)
             result, score = overlap(child1)
-            next_gen_fitness.append(genetic_algorithm_functions.fitness(score, given_length, given_k))
+            next_gen_fitness.append(genetic_algorithm_functions.fitness(score, given_length_n, given_k))
             next_gen.append(child2)
             _result, score = overlap(child2)
-            next_gen_fitness.append(genetic_algorithm_functions.fitness(score, given_length, given_k))
+            next_gen_fitness.append(genetic_algorithm_functions.fitness(score, given_length_n, given_k))
 
         if choice == 'multi':
             child1, child2 = genetic_algorithm_functions.crossover(one, two)
@@ -145,10 +145,10 @@ for generations in range(max_generations_count):
             child2 = child2.tolist()
             next_gen.append(child1)
             result, score = overlap(child1)
-            next_gen_fitness.append(genetic_algorithm_functions.fitness(score, given_length, given_k))
+            next_gen_fitness.append(genetic_algorithm_functions.fitness(score, given_length_n, given_k))
             next_gen.append(child2)
             _result, score = overlap(child2)
-            next_gen_fitness.append(genetic_algorithm_functions.fitness(score, given_length, given_k))
+            next_gen_fitness.append(genetic_algorithm_functions.fitness(score, given_length_n, given_k))
 
         if choice == 'none':
             pass
@@ -162,7 +162,7 @@ for generations in range(max_generations_count):
     '''Evaluating the fitness of a set of sequences'''
     for org in next_gen:
         res, score = overlap(org)
-        next_gen_fitness.append(genetic_algorithm_functions.fitness(score, given_length, given_k))
+        next_gen_fitness.append(genetic_algorithm_functions.fitness(score, given_length_n, given_k))
     mean_fitness.append(average(next_gen_fitness))
 
     '''Ordering lists of new generations'''
