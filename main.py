@@ -93,7 +93,7 @@ spectrum = instance_generator.generate(given_length_n, given_k, errors_percentag
 print('Shuffling spectrum to make it non-trivial problem.')
 random.shuffle(spectrum)
 
-print('Generating a sequence of {permutations_count} permutations of the input spectrum list.')
+print(f'Generating a sequence of {permutations_count} permutations of the input spectrum list.')
 for permutation in itertools.islice(itertools.permutations(spectrum), 0, permutations_count):
     permutation_list.append(permutation)
     result, count = overlap(permutation)
