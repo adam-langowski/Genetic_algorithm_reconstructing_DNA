@@ -93,7 +93,7 @@ spectrum = instance_generator.generate(given_length_n, given_k, errors_percentag
 print('Shuffling spectrum to make it non-trivial problem.')
 random.shuffle(spectrum)
 
-print('Generating a sequence of permutations_count permutations of the input spectrum list.')
+print('Generating a sequence of {permutations_count} permutations of the input spectrum list.')
 for permutation in itertools.islice(itertools.permutations(spectrum), 0, permutations_count):
     permutation_list.append(permutation)
     result, count = overlap(permutation)
@@ -109,7 +109,7 @@ print(f'First population fitness: {mean_fitness[0]}.')
 
 print(f'Creating new sequences - solutions...')
 for generations in range(max_generations_count):
-    print(f"Generation number: [{generations + 1}] ")
+    print(f"Generation: '{generations + 1}' ")
     population = 0
 
     '''Tournament selection'''
@@ -154,7 +154,7 @@ for generations in range(max_generations_count):
         if choice == 'none':
             pass
     mean_fitness.append(average(next_gen_fitness))
-    print(average(next_gen_fitness))
+    print(f'Population fitness: {average(next_gen_fitness)}\n')
 
     '''Mutating'''
     genetic_algorithm_functions.mutation(next_gen)
