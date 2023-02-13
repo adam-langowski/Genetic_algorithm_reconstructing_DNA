@@ -1,3 +1,5 @@
+# Adam Langowski 147896
+
 import random
 
 

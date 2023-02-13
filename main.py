@@ -1,4 +1,5 @@
 # Adam Langowski 147896
+
 import instance_generator
 import genetic_algorithm_functions
 import time
@@ -103,7 +104,7 @@ for org in permutation_count:
     fitness = genetic_algorithm_functions.fitness(org, given_length_n, given_k)
     permutation_fitness.append(fitness)
 
-mean_fitness.append(average(permutation_fitness))  # Primary population avg fitness
+mean_fitness.append(average(permutation_fitness))  
 print(f'First population fitness: {mean_fitness[0]}.')
 
 print(f'Creating new sequences - solutions...')
