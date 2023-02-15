@@ -32,6 +32,14 @@ class MyException(Exception):
 
 
 def check_errors_count(errors_count, positive_count, negative_count):
+    """
+    Checks if the overall errors count is greater than or equal to the sum of positive errors and negative errors.
+
+    :param errors_count: int, the total number of errors
+    :param positive_count: int, the number of positive errors
+    :param negative_count: int, the number of negative errors
+    :raises MyException: if the errors_count is smaller than the sum of positive_count and negative_count
+    """
     if errors_count < positive_count + negative_count:
         raise MyException("Inputed overall errors percentage is smaller than inputed positive errors + negative errors sum")
 
