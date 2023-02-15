@@ -7,4 +7,4 @@ Given is the classical DNA spectrum, the length of the original DNA, the length 
 Algorithm reconstructs the sequence using tournament selection as new generations evaluator.
 
 
-More detailed informations, analysis and result in attached pdf file (in polish).
+More detailed information, analysis and result in attached pdf file (in polish).
