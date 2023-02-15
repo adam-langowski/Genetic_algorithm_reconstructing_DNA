@@ -27,6 +27,15 @@ next_gen = list()
 next_gen_fitness = list()
 
 
+class MyException(Exception):
+    pass
+
+
+def check_errors_count(errors_count, positive_count, negative_count):
+    if errors_count < positive_count + negative_count:
+        raise MyException("Inputed overall errors percentage is smaller than inputed positive errors + negative errors sum")
+
+
 def average(given_list):
     """
     This function calculates the average of the elements in the given list.
@@ -83,6 +92,8 @@ print("If you want to modify any parameters you can change them in lines 9-16 in
 
 '''Starting calculating execution time'''
 start = time.time()
+
+check_errors_count(errors_percentage, positive_errors_percentage, negative_errors_percentage)
 
 print("Starting algorithm...")
 print("Creating first random generation...")
